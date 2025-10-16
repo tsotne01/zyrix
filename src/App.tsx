@@ -1,12 +1,15 @@
-import { RouterProvider, createBrowserRouter } from 'react-router'
+import { SignInPage, SignUpPage } from '@/page/auth'
+import { Header } from '@/shared/ui'
 
-import SignInPage from './page/sign-in-page'
-import SignUpPage from './page/sign-up-page'
-import Header from './shared/ui/header'
+import { RouterProvider, createBrowserRouter } from 'react-router'
 
 const router = createBrowserRouter([
   {
     path: '/',
+    element: <div>Home Page</div>,
+  },
+  {
+    path: '/sign-in',
     element: <SignInPage redirectTo="/dashboard" />,
   },
   {

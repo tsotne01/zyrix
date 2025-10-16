@@ -1,12 +1,20 @@
 import { SignInPage, SignUpPage } from '@/page/auth'
 import { Header } from '@/shared/ui'
 
-import { RouterProvider, createBrowserRouter } from 'react-router'
+import { SignedOut } from '@clerk/clerk-react'
+import { Navigate, RouterProvider, createBrowserRouter } from 'react-router'
 
 const router = createBrowserRouter([
   {
     path: '/',
-    element: <div>Home Page</div>,
+    element: (
+      <>
+        <SignedOut>
+          <Navigate to="/sign-in" replace />
+        </SignedOut>
+        <div>Home Page</div>
+      </>
+    ),
   },
   {
     path: '/sign-in',

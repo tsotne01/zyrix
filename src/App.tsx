@@ -1,13 +1,12 @@
 import { SignInPage, SignUpPage } from '@/page/auth'
-import { Header } from '@/shared/ui'
 
 import { RouterProvider, createBrowserRouter } from 'react-router'
 
+import { MainLayout } from './layout'
+import { Dashboard } from './page/dashboard'
+import { HomePage } from './page/home'
+
 const router = createBrowserRouter([
-  {
-    path: '/',
-    element: <div>Home Page</div>,
-  },
   {
     path: '/sign-in',
     element: <SignInPage redirectTo="/dashboard" />,
@@ -17,12 +16,17 @@ const router = createBrowserRouter([
     element: <SignUpPage redirectTo="/dashboard" />,
   },
   {
-    path: '/dashboard',
-    element: (
-      <div>
-        <Header />
-      </div>
-    ),
+    element: <MainLayout />,
+    children: [
+      {
+        path: '/',
+        element: <HomePage />,
+      },
+      {
+        path: '/dashboard',
+        element: <Dashboard />,
+      },
+    ],
   },
 ])
 

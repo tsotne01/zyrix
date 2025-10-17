@@ -9,9 +9,9 @@ export const MainLayout = ({ children }: MainLayoutProps) => {
   const user = useUser()
   console.log('User:', user)
   return (
-    <div>
+    <>
       <Header />
       {children}
-    </div>
+    </>
   )
 }
